@@ -1,0 +1,42 @@
+<div class="list-group">
+  <div *ngIf="selectedKey === 'kalte_speisen'">
+    <div *ngFor="let categoryEl of kalte_speisen" style="margin: 50px;">
+      <h3>{{categoryEl}}</h3>
+      <div *ngFor="let article of articles">
+          <app-article-item
+            *ngIf="article.category === categoryEl"
+            [articleItem]="article"></app-article-item>
+      </div>
+    </div>
+  </div>
+    <div *ngIf="selectedKey === 'vorspeisen'">
+      <div *ngFor="let categoryEl of vorspeisen">
+        <h3>{{categoryEl}}</h3>
+        <div *ngFor="let article of articles">
+          <app-article-item
+            *ngIf="article.category === categoryEl"
+            [articleItem]="article"></app-article-item>
+        </div>
+      </div>
+    </div>
+      <div *ngIf="selectedKey === 'hauptgerichte'">
+        <div *ngFor="let categoryEl of hauptgerichte">
+          <h3>{{categoryEl}}</h3>
+          <div *ngFor="let article of articles">
+            <app-article-item
+              *ngIf="article.category === categoryEl"
+              [articleItem]="article"></app-article-item>
+          </div>
+      </div>
+    </div>
+      <div *ngIf="selectedKey === 'desserts'">
+        <div *ngFor="let categoryEl of desserts">
+          <h3>{{categoryEl}}</h3>
+          <div *ngFor="let article of articles">
+            <app-article-item
+              *ngIf="article.category === categoryEl"
+              [articleItem]="article"></app-article-item>
+          </div>
+        </div>
+    </div>
+</div>

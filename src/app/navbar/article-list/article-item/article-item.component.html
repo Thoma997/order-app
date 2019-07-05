@@ -1,0 +1,61 @@
+<div class="list-group-item list-group-item-action flex-column align-items-start">
+  <div class="row">
+    <div class="col-md-3">
+        <span class="pull-left">
+          <!--<img
+           [src]="article['imagePath']"
+            [alt]="article['name']"
+            class="img-responsive"
+            style="max-height: 50px"> -->
+          <img
+            src=""
+            [alt]="article['name']"
+            class="img-responsive"
+            style="max-height: 50px">
+        </span>
+      <br/>
+      <br/>
+    </div>
+    <div class="col-md-9">
+      <div class="row">
+        <div class="col-md-9">
+          <h5 class="mb-1">{{article['name']}}</h5>
+        </div>
+        <div class="col-md-3">
+          <input type="number"
+                 name="amount"
+                 class="form-control"
+                 [(ngModel)]="orderArticleAmount"
+                 style="width: 100%;"
+                 [readonly]="articleOption === 'Entfernen'"
+                  (keyup)="onKeyup()">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-9">
+          <p class="mb-1">Description</p>
+        </div>
+        <div class="col-md-3">
+          <div class="btn-group" data-toggle="buttons" style="width: 100%;" >
+            <label class="btn btn-secondary"
+                   (click)="onMinusOne()"
+                   id="minusOne"> - </label>
+            <label class="btn btn-secondary" (click)="onPlusOne()" id="plusOne"> + </label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-9">
+          <small class="text-muted">Preis: {{article['price']}}€ pro {{article['pe']}}</small>
+        </div>
+        <div class="col-md-3">
+          <button class="btn btn-block"
+                  (click)="onSubmit()"
+                  [ngClass]="{'btn-success': articleOption === 'Hinzufügen',
+                              'btn-danger': articleOption === 'Entfernen',
+                              'btn-primary': articleOption === 'Aktualisieren'}">{{articleOption}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
