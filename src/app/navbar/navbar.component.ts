@@ -26,10 +26,15 @@ export class NavbarComponent{
 
   onStart(value:boolean) {
     this.started = value;
+    console.log("Started true")
   }
 
   onCheckout() {
     this.checkedout = true;
+    console.log("Checkout true")
+  }
+  onClickSubmit(value){
+
   }
 
 }

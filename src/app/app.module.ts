@@ -13,6 +13,7 @@ import {CheckoutComponent} from './navbar/checkout/checkout.component';
 import { SummaryElementComponent } from './navbar/checkout/summary/summary-element/summary-element.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {OwlDateTimeModule, OwlNativeDateTimeModule} from 'ng-pick-datetime';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import {OwlDateTimeModule, OwlNativeDateTimeModule} from 'ng-pick-datetime';
     FormsModule,
     NgbModule,
     OwlDateTimeModule,
-    OwlNativeDateTimeModule
+    OwlNativeDateTimeModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
