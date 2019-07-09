@@ -1,13 +1,13 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Article} from '../../article';
-import {ApiService} from '../../api.service';
+import {OrderService} from '../../order.service';
 
 @Component({
   selector: 'app-article-list',
   templateUrl: './article-list.component.html',
   styleUrls: ['./article-list.component.css']
 })
-export class ArticleListComponent implements OnInit {
+export class ArticleListComponent {
   articles: Article[];
   @Input() selectedKey = 'kalte_speisen';
 
@@ -15,15 +15,21 @@ export class ArticleListComponent implements OnInit {
   kalte_speisen: string[] = ['Fingerfood', 'Kalte Platten und Vorspeisen'];
   vorspeisen: string[] = ['Salate', 'Salate / Antipasti'];
   hauptgerichte: string[] = ['Warme Gerichte', 'Gemüse', 'Kartoffeln und Co'];
-  desserts:string[] = ['Desserts'];
+  desserts:string[] = ['Dessert'];
 
-  constructor(private apiService: ApiService) {}
+  constructor(private orderService: OrderService) {
+    this.orderService.getArticles().subscribe(value => {
 
-   ngOnInit(){
-     this.apiService.readArticles().subscribe((articles: Article[]) => {
-       this.articles = articles;
-       console.log(this.articles);
-     });
-   }
+      const currentArticles = value;
+
+      for (let article of currentArticles) {
+        article.price = parseFloat(String(article.price));
+        article.amount = parseInt(String(article.amount));
+      }
+
+      this.articles = currentArticles;
+      console.log(this.articles);
+    });
+  }
 
 }

@@ -1,7 +1,42 @@
 <div class="container" style="margin-top: 10%">
-  <div *ngFor="let order of orders" class="row">
-    <div class="col-md6">
-      <h4>{{order.article.name}}</h4>
+  <div class="list-group">
+    <div class="list-group-item list-group-item-action flex-column align-items-start">
+      <div class="row">
+        <div class="col-md-1">
+          <p>ArtikelNr.</p>
+        </div>
+        <div class="col-md-6">
+          <p>Artikel</p>
+        </div>
+        <div class="col-md-1">
+          <p>Anzahl</p>
+        </div>
+        <div class="col-md-2">
+          <p>Preis pro Einheit</p>
+        </div>
+        <div class="col-md-2">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngFor="let article of articles" class="list-group">
+    <app-summary-element [articleItem]="article"></app-summary-element>
+  </div>
+  <div class="list-group">
+    <div class="list-group-item list-group-item-action flex-column align-items-start">
+      <div class="row">
+        <div class="col-md-8">
+          <p><b>Gesamtwert:</b></p>
+        </div>
+        <div class="col-md-4">
+          <p><b>{{totalAmount}} €</b></p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+
+
+

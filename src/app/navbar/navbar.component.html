@@ -1,18 +1,29 @@
 <div class="container">
   <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
     <a class="navbar-brand" href="#">Bestellprozess</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-item nav-link active" (click)="onSelect('kalte_speisen')">Kalte Speisen <span class="sr-only">(current)</span></a>
-        <a class="nav-item nav-link" (click)="onSelect('vorspeisen')">Vorspeisen</a>
-        <a class="nav-item nav-link" (click)="onSelect('hauptgerichte')">Hauptgerichte</a>
-        <a class="nav-item nav-link" (click)="onSelect('desserts')">Desserts</a>
+        <a class="nav-item nav-link"
+           [ngClass]="{'active': featureSelected === 'kalte_speisen'}"
+           (click)="onSelect('kalte_speisen')">Kalte Speisen</a>
+        <a class="nav-item nav-link"
+           [ngClass]="{'active': featureSelected === 'vorspeisen'}"
+           (click)="onSelect('vorspeisen')">Vorspeisen</a>
+        <a class="nav-item nav-link"
+           [ngClass]="{'active': featureSelected === 'hauptgerichte'}"
+           (click)="onSelect('hauptgerichte')">Hauptgerichte</a>
+        <a class="nav-item nav-link"
+           [ngClass]="{'active': featureSelected === 'desserts'}"
+           (click)="onSelect('desserts')">Desserts</a>
       </div>
       <ul class="navbar-nav ml-auto">
-        <button class="btn btn-outline-success my-2 my-sm-0" (click)="onCheckout()">zur Kasse (Wert: {{ totalAmount | json }}€)</button>
+        <button class="btn btn-outline-success my-2 my-sm-0" (click)="onCheckout()">zur Kasse
+          (Wert: {{ totalAmount | json }}€)
+        </button>
       </ul>
     </div>
   </nav>
@@ -22,21 +33,42 @@
      class="container"
      style="margin-top: 10%; margin-left: auto; margin-right: auto; text-align: center">
   <h3 style="display: inline-block;">Willkommen zum Winterhalter Bestelltool!</h3>
-  <br />
-  <div style="display: inline-block;" class="col-md-6">
-    <button class="btn btn-lg btn-block btn-success" (click)="onStart(true)">Los Gehts!</button>
+  <p>Liebe Kunden, die Obere Metzgerei Winterhalter wird digital! </p>
+  <p>Wir möchten Sie dafüber informieren, dass Sie hier die Möglichkeit haben
+    eine Bestellung verbindlich aufzugeben. Diese wird für Sie von unserem Team vorbereitet,
+    sodass Sie Ihre Bestellung zum von Ihnen gewünschten Termin pünktlich abholen können.</p>
+  <p>Wann planen sie Ihre Bestellung abzuholen?</p>
+  <br/>
+  <hr>
+  <form #pickup = "ngForm" (ngSubmit) = "onClickSubmit(pickup.value)" >
+    <label>
+      Datum:
+      <input [owlDateTimeTrigger]="dt3" [owlDateTime]="dt3">
+      <owl-date-time [pickerType]="'calendar'" #dt3></owl-date-time>
+    </label>
+
+    <label>
+      Uhrzeit:
+      <input [owlDateTimeTrigger]="dt4" [owlDateTime]="dt4">
+      <owl-date-time [pickerType]="'timer'" #dt4></owl-date-time>
+    </label>
+    <div style="display: inline-block;" class="col-md-6">
+      <button class="btn btn-lg btn-block btn-success" (click)="onStart(true)">Los Gehts!</button>
+    </div>
+  </form>
+  <hr>
+  <br/>
+
+
+  <div *ngIf="started && !checkedout"
+       class="container"
+       style="margin-top: 10%;">
+    <app-article-list [selectedKey]="featureSelected"></app-article-list>
+  </div>
+
+  <div *ngIf="started && checkedout"
+       class="container"
+       style="margin-top: 10%;">
+    <app-checkout></app-checkout>
   </div>
 </div>
-
-<div *ngIf="started && !checkedout"
-     class="container"
-     style="margin-top: 10%;">
-  <app-article-list [selectedKey]="featureSelected"></app-article-list>
-</div>
-
-<div *ngIf="started && checkedout"
-     class="container"
-     style="margin-top: 10%;">
-  <app-checkout></app-checkout>
-</div>
-

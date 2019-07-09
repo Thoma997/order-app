@@ -6,7 +6,9 @@ export class Article {
   id: string;
   name: string;
   pe: string;
-  price: string;
+  price: number;
   category: string;
   subcategory: string;
+  amount: number;
+  imglink: string;
 }

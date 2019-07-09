@@ -1,0 +1,35 @@
+ <ngb-alert *ngIf="!nanAlertClosed"
+             style="margin: 10px 10px 10px 10px;"
+             (close)="nanAlertClosed = true">Lieber Kunde, bitte geben sie <b>eine Zahl</b> als Artikelanzahl ein.</ngb-alert>
+ <ngb-alert *ngIf="!negativeAlertClosed"
+            style="margin: 10px 10px 10px 10px;"
+            (close)="negativeAlertClosed = true">Lieber Kunde, bitte geben sie <b>eine positive Zahl</b> als Artikelanzahl ein.</ngb-alert>
+<div *ngIf="article.amount !== 0"
+     class="list-group-item list-group-item-action flex-column align-items-start">
+  <div class="row" >
+    <div class="col-sm-1">
+      <p>{{article.id}}</p>
+    </div>
+    <div class="col-sm-6">
+      <p class="mb-1">{{article.name}}</p>
+    </div>
+    <div class="col-sm-1">
+      <input type="number"
+             name="amount"
+             class="form-control"
+             [(ngModel)]="shortTimeArticleAmount"
+             style="width: 100%;"
+             (input)="onInput(article.id, $event)">
+    </div>
+    <div class="col-sm-2">
+      <p>{{article.price}} € pro {{article.pe}}</p>
+    </div>
+    <div class="col-sm-2">
+      <button class="btn btn-sm"
+              style="margin-left: 25%;"
+              (click)="onSubmit(article.id)"
+              [ngClass]="{'btn-outline-danger': updateButton === 'Entfernen',
+                                  'btn-primary': updateButton !== 'Entfernen'}">{{updateButton}}</button>
+    </div>
+  </div>
+</div>

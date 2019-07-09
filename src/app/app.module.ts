@@ -10,6 +10,9 @@ import { ArticleItemComponent } from './navbar/article-list/article-item/article
 import { SummaryComponent } from './navbar/checkout/summary/summary.component';
 import { CustomerDetailsComponent } from './navbar/checkout/customer-details/customer-details.component';
 import {CheckoutComponent} from './navbar/checkout/checkout.component';
+import { SummaryElementComponent } from './navbar/checkout/summary/summary-element/summary-element.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {OwlDateTimeModule, OwlNativeDateTimeModule} from 'ng-pick-datetime';
 
 
 @NgModule({
@@ -20,12 +23,16 @@ import {CheckoutComponent} from './navbar/checkout/checkout.component';
     ArticleItemComponent,
     CheckoutComponent,
     SummaryComponent,
-    CustomerDetailsComponent
+    CustomerDetailsComponent,
+    SummaryElementComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgbModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

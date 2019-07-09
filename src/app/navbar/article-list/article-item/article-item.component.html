@@ -25,10 +25,9 @@
           <input type="number"
                  name="amount"
                  class="form-control"
-                 [(ngModel)]="orderArticleAmount"
+                 [(ngModel)]="article.amount"
                  style="width: 100%;"
-                 [readonly]="articleOption === 'Entfernen'"
-                  (keyup)="onKeyup()">
+                  (input)="onInput()">
         </div>
       </div>
       <div class="row">
@@ -49,11 +48,9 @@
           <small class="text-muted">Preis: {{article['price']}}€ pro {{article['pe']}}</small>
         </div>
         <div class="col-md-3">
-          <button class="btn btn-block"
+          <button class="btn btn-block btn-danger"
                   (click)="onSubmit()"
-                  [ngClass]="{'btn-success': articleOption === 'Hinzufügen',
-                              'btn-danger': articleOption === 'Entfernen',
-                              'btn-primary': articleOption === 'Aktualisieren'}">{{articleOption}}</button>
+                  *ngIf="article.amount > 0">Entfernen</button>
         </div>
       </div>
     </div>

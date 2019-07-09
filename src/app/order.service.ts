@@ -1,52 +1,64 @@
-import { Injectable } from '@angular/core';
-import {Order} from './order';
+import {Injectable} from '@angular/core';
 import {Article} from './article';
 import {BehaviorSubject, Observable} from 'rxjs';
+import {ApiService} from './api.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class OrderService {
-  private orders: Order[] = [];
+export class OrderService{
   private total: BehaviorSubject<number>;
+  private articles: BehaviorSubject<Article[]>;
 
 
-  constructor(){
+  constructor(private apiService: ApiService){
     this.total = new BehaviorSubject<number>(0);
+    this.articles = new BehaviorSubject<Article[]>([]);
+
+    this.apiService.readArticles().subscribe((articles: Article[]) => {
+      this.articles.next(articles);
+    });
   }
 
-  addOrder(article: Article, amount:number) {
-    this.orders.push({article: article, amount: amount});
-    let total = 0;
-    for (let order of this.orders) {
-      let subtotal = order.amount * parseFloat(order.article.price);
-      total += subtotal;
+  addOrder(id:string, amount:number){
+    const currentArticles = this.articles.getValue();
+    for ( let article of currentArticles) {
+      if (article.id === id) {
+        article.amount = amount;
+      }
+    }
+    this.articles.next(currentArticles);
+
+    this.updateOrdersTotal()
+  }
+
+  deleteOrder(id: string){
+    const currentArticles = this.articles.getValue();
+    for ( let article of currentArticles) {
+      if (article.id === id) {
+        article.amount = 0;
+      }
+    }
+    this.articles.next(currentArticles);
+
+    this.updateOrdersTotal();
+  }
+
+  updateOrdersTotal(){
+    let total: number = 0.00;
+    for (let article of this.articles.getValue()){
+      total += (article.amount * parseFloat(String(article.price)));
     }
     this.total.next(total);
-  }
-
-  editOrderAmount(id: string, amount: number) {
-    const index: number = this.orders.findIndex(article => article.article.id === id);
-    let subtotal = this.total.getValue() + (parseFloat(this.orders[index].article.price) * (amount - this.orders[index].amount));
-    this.total.next(subtotal);
-    if(index !== -1) {
-      this.orders[index].amount = amount;
-    }
-  }
-
-  deleteOrder(id:string) {
-    const index: number = this.orders.findIndex(article => article.article.id === id);
-    if (index !== -1) {
-      this.orders.splice(index, 1);
-    }
-  }
-
-  getOrders() {
-    return this.orders;
   }
 
   getOrdersTotal(): Observable<number>{
     return this.total.asObservable();
   }
+
+  getArticles(){
+    return this.articles.asObservable();
+  }
+
 }
 

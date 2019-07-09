@@ -10,7 +10,7 @@
     </div>
   </div>
     <div *ngIf="selectedKey === 'vorspeisen'">
-      <div *ngFor="let categoryEl of vorspeisen">
+      <div *ngFor="let categoryEl of vorspeisen" style="margin: 50px;">
         <h3>{{categoryEl}}</h3>
         <div *ngFor="let article of articles">
           <app-article-item
@@ -20,7 +20,7 @@
       </div>
     </div>
       <div *ngIf="selectedKey === 'hauptgerichte'">
-        <div *ngFor="let categoryEl of hauptgerichte">
+        <div *ngFor="let categoryEl of hauptgerichte" style="margin: 50px;">
           <h3>{{categoryEl}}</h3>
           <div *ngFor="let article of articles">
             <app-article-item
@@ -30,7 +30,7 @@
       </div>
     </div>
       <div *ngIf="selectedKey === 'desserts'">
-        <div *ngFor="let categoryEl of desserts">
+        <div *ngFor="let categoryEl of desserts" style="margin: 50px;">
           <h3>{{categoryEl}}</h3>
           <div *ngFor="let article of articles">
             <app-article-item

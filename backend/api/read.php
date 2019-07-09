@@ -18,6 +18,8 @@ if($result = mysqli_query($con,$sql))
     $articles[$i]['price'] = $row['PRICE'];
     $articles[$i]['category'] = $row['CATEGORY'];
     $articles[$i]['subcategory'] = $row['SUBCATEGORY'];
+    $articles[$i]['amount'] = $row['AMOUNT'];
+    $articles[$i]['imglink'] = $row['IMGLINK'];
     $i++;
   }
 
