@@ -11,6 +11,8 @@ export class NavbarComponent{
   started = false;
   checkedout = false;
   featureSelected: string = 'kalte_speisen';
+  selectedDate: Date;
+  selectedTime: Date;
 
   constructor(private orderService: OrderService) {
     this.orderService.getOrdersTotal().subscribe(value => {
@@ -24,17 +26,15 @@ export class NavbarComponent{
     this.checkedout  = false;
   }
 
-  onStart(value:boolean) {
-    this.started = value;
-    console.log("Started true")
-  }
-
   onCheckout() {
     this.checkedout = true;
     console.log("Checkout true")
   }
-  onClickSubmit(value){
+  onSubmit(){
+    this.started = true;
 
+    console.log(this.selectedDate);
+    console.log(this.selectedTime);
   }
 
 }
