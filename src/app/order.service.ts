@@ -47,7 +47,7 @@ export class OrderService{
   updateOrdersTotal(){
     let total: number = 0.00;
     for (let article of this.articles.getValue()){
-      total += (article.amount * parseFloat(String(article.price)));
+      total += Number((article.amount * parseFloat(String(article.price))).toFixed(2));
     }
     this.total.next(total);
   }

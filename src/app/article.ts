@@ -11,4 +11,5 @@ export class Article {
   subcategory: string;
   amount: number;
   imglink: string;
+  pickupdiff: number;
 }

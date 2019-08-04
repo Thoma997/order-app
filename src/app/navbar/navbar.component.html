@@ -40,25 +40,34 @@
   <p>Wann planen sie Ihre Bestellung abzuholen?</p>
   <br/>
   <hr>
-  <form #pickup = "ngForm" (ngSubmit) = "onClickSubmit(pickup.value)" >
+  <form #pickup = "ngForm" (ngSubmit) = "onSubmit()" >
     <label>
       Datum:
-      <input [owlDateTimeTrigger]="dt3" [owlDateTime]="dt3">
+      <input [(ngModel)]="selectedDate"
+             name="dt3"
+             [owlDateTimeTrigger]="dt3"
+             [owlDateTime]="dt3"
+             required>
       <owl-date-time [pickerType]="'calendar'" #dt3></owl-date-time>
     </label>
 
     <label>
       Uhrzeit:
-      <input [owlDateTimeTrigger]="dt4" [owlDateTime]="dt4">
+      <input [(ngModel)]="selectedTime"
+             name="dt4"
+             [owlDateTimeTrigger]="dt4"
+             [owlDateTime]="dt4"
+             required>
       <owl-date-time [pickerType]="'timer'" #dt4></owl-date-time>
     </label>
-  </form>
-</div>
 
-<div class="row">
-  <div style="display: inline-block; margin-left: 25%; margin-right: 25%;" class="col-md-6">
-    <button class="btn btn-lg btn-block btn-success" (click)="onStart(true)">Los Gehts!</button>
-  </div>
+    <div class="row">
+      <div style="display: inline-block; margin-left: 25%; margin-right: 25%;" class="col-md-6">
+        <button class="btn btn-lg btn-block btn-success" type="submit" [disabled]="!pickup.form.valid">Los Gehts!</button>
+      </div>
+    </div>
+
+  </form>
 </div>
 
 

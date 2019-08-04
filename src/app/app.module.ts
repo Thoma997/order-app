@@ -14,6 +14,7 @@ import { SummaryElementComponent } from './navbar/checkout/summary/summary-eleme
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {OwlDateTimeModule, OwlNativeDateTimeModule} from 'ng-pick-datetime';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {TimeModule} from './time.module';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     NgbModule,
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    TimeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

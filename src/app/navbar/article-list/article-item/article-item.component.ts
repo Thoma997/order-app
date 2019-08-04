@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {Article} from '../../../article';
 import {OrderService} from '../../../order.service';
+import {DateService} from '../../../date.service';
 
 @Component({
   selector: 'app-article-item',
@@ -9,9 +10,10 @@ import {OrderService} from '../../../order.service';
 })
 export class ArticleItemComponent {
   @Input('articleItem') article: Article;
+  pickupDiff: number;
 
-  constructor(private orderService: OrderService) {
-
+  constructor(private orderService: OrderService, private dateService: DateService) {
+  this.pickupDiff = dateService.getPickupDiff();
   }
 
 

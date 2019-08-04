@@ -27,6 +27,7 @@
                  class="form-control"
                  [(ngModel)]="article.amount"
                  style="width: 100%;"
+                 [disabled]="pickupDiff < article.pickupdiff"
                   (input)="onInput()">
         </div>
       </div>
@@ -34,13 +35,16 @@
         <div class="col-md-9">
           <p class="mb-1">Description</p>
         </div>
-        <div class="col-md-3">
+        <div *ngIf="pickupDiff >= article.pickupdiff" class="col-md-3">
           <div class="btn-group" data-toggle="buttons" style="width: 100%;" >
             <label class="btn btn-secondary"
                    (click)="onMinusOne()"
                    id="minusOne"> - </label>
             <label class="btn btn-secondary" (click)="onPlusOne()" id="plusOne"> + </label>
           </div>
+        </div>
+        <div *ngIf="pickupDiff < article.pickupdiff" class="col-md-3">
+          <p style="color: red">Die Mindestvorlaufzeit um dieses Produkt zu bestellen beträgt: {{article.pickupdiff}} Tage</p>
         </div>
       </div>
       <div class="row">

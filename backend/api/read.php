@@ -20,6 +20,7 @@ if($result = mysqli_query($con,$sql))
     $articles[$i]['subcategory'] = $row['SUBCATEGORY'];
     $articles[$i]['amount'] = $row['AMOUNT'];
     $articles[$i]['imglink'] = $row['IMGLINK'];
+    $articles[$i]['pickupdiff'] = $row['PICKUPDIFF'];
     $i++;
   }
 
