@@ -21,7 +21,7 @@
            (click)="onSelect('desserts')">Desserts</a>
       </div>
       <ul class="navbar-nav ml-auto">
-        <button class="btn btn-outline-success my-2 my-sm-0" (click)="onCheckout()">zur Kasse
+        <button [disabled]="!started" class="btn btn-outline-success my-2 my-sm-0" (click)="onCheckout()">zur Kasse
           (Wert: {{ totalAmount | json }}€)
         </button>
       </ul>

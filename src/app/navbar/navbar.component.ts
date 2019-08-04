@@ -24,8 +24,10 @@ export class NavbarComponent{
 
 
   onSelect(feature: string){
-    this.featureSelected = feature;
-    this.checkedout  = false;
+    if(this.started){
+      this.featureSelected = feature;
+      this.checkedout  = false;
+    }
   }
 
   onCheckout() {
