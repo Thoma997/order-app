@@ -25,4 +25,8 @@ export class DateService {
 
     return pickupDiffDays;
   }
+
+  getPickupDate(){
+    return this.pickupDate;
+  }
 }

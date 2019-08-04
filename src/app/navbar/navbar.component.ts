@@ -14,6 +14,7 @@ export class NavbarComponent{
   featureSelected: string = 'kalte_speisen';
   selectedDate: Date;
   selectedTime: Date;
+  selectedBranch: string;
 
   constructor(private orderService: OrderService, private dateService: DateService) {
     this.orderService.getOrdersTotal().subscribe(value => {

@@ -37,9 +37,9 @@
   <p>Wir möchten Sie dafüber informieren, dass Sie hier die Möglichkeit haben
     eine Bestellung verbindlich aufzugeben. Diese wird für Sie von unserem Team vorbereitet,
     sodass Sie Ihre Bestellung zum von Ihnen gewünschten Termin pünktlich abholen können.</p>
-  <p>Wann planen sie Ihre Bestellung abzuholen?</p>
   <br/>
   <hr>
+  <p>Wann und Wo planen sie Ihre Bestellung abzuholen?</p>
   <form #pickup = "ngForm" (ngSubmit) = "onSubmit()" >
     <label>
       Datum:
@@ -61,6 +61,17 @@
       <owl-date-time [pickerType]="'timer'" #dt4></owl-date-time>
     </label>
 
+    <div class="form-group">
+      <label for="branch">Abholfiliale:</label>
+      <select id="branch" name="branch" [(ngModel)]="selectedBranch" required>
+        <option value="elzach">Elzach: (Hauptstraße 31, 79215 Elzach)</option>
+        <option value="freiburg">Freiburg: (Bertoldstraße 27, 79098 Freiburg)</option>
+        <option value="haslach">Haslach: (Alte Eisenbahnstraße 1, 77716 Haslach im Kinzigtal)</option>
+        <option value="herbolzheim">Herbolzheim: (Maria-Sandstraße 3, 79336 Herbolzheim)</option>
+        <option value="kirchzarten">Kirchzarten: (Marktplatz 3, 79199 Kirchzarten)</option>
+        <option value="staufen">Staufen: (Adlergasse 8, 79219 Staufen im Breisgau)</option>
+      </select>
+    </div>
     <div class="row">
       <div style="display: inline-block; margin-left: 25%; margin-right: 25%;" class="col-md-6">
         <button class="btn btn-lg btn-block btn-success" type="submit" [disabled]="!pickup.form.valid">Los Gehts!</button>

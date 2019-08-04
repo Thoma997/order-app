@@ -1,1 +1,96 @@
-<p>customer-details works!</p>
+<div class="container" style="margin-top: 10%">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-sm-offset-1 col-offset-md-2">
+      <form>
+        <div id="customer-data col-md-12">
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label for="prename">Vorname:</label>
+              <input type="text"
+                     id="prename"
+                     class="form-control"
+                     ngModel
+                     name="prename">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="name">Nachname:</label>
+              <input type="text"
+                     id="name"
+                     class="form-control"
+                     ngModel
+                     name="name">
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-10">
+              <label for="street">Straße:</label>
+              <input type="text"
+                     id="street"
+                     class="form-control"
+                     ngModel
+                     name="street">
+            </div>
+            <div class="form-group col-md-2">
+              <label for="street-number">Hausnummer:</label>
+              <input type="text"
+                     id="street-number"
+                     class="form-control"
+                     ngModel
+                     name="street-number">
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-4">
+              <label for="zip">PLZ:</label>
+              <input type="text"
+                     id="zip"
+                     class="form-control"
+                     ngModel
+                     name="zip">
+            </div>
+            <div class="form-group col-md-8">
+              <label for="city">Ort:</label>
+              <input type="text"
+                     id="city"
+                     class="form-control"
+                     ngModel
+                     name="city">
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label for="phone">Telefon (bei Rückfragen):</label>
+              <input type="text"
+                     id="phone"
+                     class="form-control"
+                     placeholder="Mobil oder Hausanschluss"
+                     ngModel
+                     name="phone">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="email">E-Mail:</label>
+              <input type="text"
+                     id="email"
+                     class="form-control"
+                     ngModel
+                     name="email">
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-12">
+              <label for="additions">Bemerkungen:</label>
+              <textarea ngModel
+                        name="additions"
+                        id="additions"
+                        placeholder="Möchten Sie uns noch etwas mitteilen?"
+                        class="form-control"
+                        style="height: 200px;"
+              ></textarea>
+
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
