@@ -40,7 +40,7 @@ export class NavbarComponent{
   this.selectedDate.setMinutes(this.selectedTime.getMinutes());
   console.log(this.selectedDate);
   this.dateService.setPickupDate(this.selectedDate);
-
+  this.dateService.setBranch(this.selectedBranch);
   }
 
 }

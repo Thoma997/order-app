@@ -7,6 +7,7 @@ export class DateService {
 
   private today: Date = new Date();
   private pickupDate: Date;
+  private branch: string;
 
   constructor() { }
 
@@ -19,14 +20,22 @@ export class DateService {
     return now;
   }
 
-  getPickupDiff(){
+  getPickupDiff(): number{
     let pickupDiffMS: number = this.pickupDate.getTime() - this.today.getTime();
     let pickupDiffDays: number = pickupDiffMS / 86400000; // 1000 * 60 * 60 * 24
 
     return pickupDiffDays;
   }
 
-  getPickupDate(){
+  getPickupDate(): Date {
     return this.pickupDate;
+  }
+
+  setBranch(branch:string){
+    this.branch = branch;
+  }
+
+  getBranch(): string {
+    return this.branch;
   }
 }

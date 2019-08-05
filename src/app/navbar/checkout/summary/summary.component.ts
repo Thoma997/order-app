@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {OrderService} from '../../../order.service';
 import {Article} from '../../../article';
-import {DateService} from '../../../date.service';
 
 
 @Component({
@@ -12,10 +11,8 @@ import {DateService} from '../../../date.service';
 export class SummaryComponent{
 articles: Article[];
 totalAmount: number;
-pickupDate: string;
-dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
 
-  constructor(private orderService: OrderService, private dateService: DateService) {
+  constructor(private orderService: OrderService) {
     this.orderService.getArticles().subscribe(value => {
       const currentArticles = value;
       for (let article of currentArticles) {
@@ -28,8 +25,6 @@ dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
     this.orderService.getOrdersTotal().subscribe(value => {
       this.totalAmount = value;
     });
-
-    this.pickupDate = this.dateService.getPickupDate().toLocaleDateString('de-DE', this.dateOptions);
   }
 
 
