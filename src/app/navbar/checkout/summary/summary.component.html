@@ -30,7 +30,7 @@
           <p><b>Gesamtwert:</b></p>
         </div>
         <div class="col-md-4">
-          <p><b>{{totalAmount}} €</b></p>
+          <p><b>{{totalAmount | number: '1.2'}} €</b></p>
         </div>
       </div>
     </div>
@@ -43,11 +43,8 @@
       <div class="row">
         <div class="col-md-12" style="alignment: center">
           <p>
-            Unser Team der Filiale <br/>
-          {{pickupBranch}} <br/>
-            bereitet Ihre Bestellung auf <br/>
-          {{pickupDate}}Uhr <br/>
-          vor.
+            Unser Team der Filiale <b>{{pickupBranch}}</b> freut sich, Ihre Bestellung auf <b>{{pickupDate}} Uhr</b> vorzubereiten.<br/><br/>
+            <b>Wichtig: Bezahlung (Mit Karte oder in Bar) ist nur bei Abholung der Bestellung in der Filiale möglich!</b>
           </p>
         </div>
       </div>

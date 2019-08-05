@@ -27,7 +27,7 @@ export class SummaryComponent{
     });
 
     this.orderService.getOrdersTotal().subscribe(value => {
-      this.totalAmount = value;
+      this.totalAmount = Number(value.toFixed(2));
     });
 
     this.pickupDate = this.dateService.getPickupDate().toLocaleDateString('de-DE', this.dateOptions);

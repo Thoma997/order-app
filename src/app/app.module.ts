@@ -16,7 +16,6 @@ import {OwlDateTimeModule, OwlNativeDateTimeModule} from 'ng-pick-datetime';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TimeModule} from './time.module';
 
-
 @NgModule({
   declarations: [
     AppComponent,

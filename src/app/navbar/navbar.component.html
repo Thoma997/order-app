@@ -22,7 +22,7 @@
       </div>
       <ul class="navbar-nav ml-auto">
         <button [disabled]="!started" class="btn btn-outline-success my-2 my-sm-0" (click)="onCheckout()">zur Kasse
-          (Wert: {{ totalAmount | json }}€)
+          (Wert: {{ totalAmount | json | number: '1.2'}}€)
         </button>
       </ul>
     </div>
@@ -45,6 +45,7 @@
       Datum:
       <input [(ngModel)]="selectedDate"
              name="dt3"
+             id="dt3"
              [owlDateTimeTrigger]="dt3"
              [owlDateTime]="dt3"
              required>
@@ -64,12 +65,12 @@
     <div class="form-group">
       <label for="branch">Abholfiliale:</label>
       <select id="branch" name="branch" [(ngModel)]="selectedBranch" required>
-        <option value="elzach">Elzach: (Hauptstraße 31, 79215 Elzach)</option>
-        <option value="freiburg">Freiburg: (Bertoldstraße 27, 79098 Freiburg)</option>
-        <option value="haslach">Haslach: (Alte Eisenbahnstraße 1, 77716 Haslach im Kinzigtal)</option>
-        <option value="herbolzheim">Herbolzheim: (Maria-Sandstraße 3, 79336 Herbolzheim)</option>
-        <option value="kirchzarten">Kirchzarten: (Marktplatz 3, 79199 Kirchzarten)</option>
-        <option value="staufen">Staufen: (Adlergasse 8, 79219 Staufen im Breisgau)</option>
+        <option value="Elzach">Elzach: (Hauptstraße 31, 79215 Elzach)</option>
+        <option value="Freiburg">Freiburg: (Bertoldstraße 27, 79098 Freiburg)</option>
+        <option value="Haslach">Haslach: (Alte Eisenbahnstraße 1, 77716 Haslach im Kinzigtal)</option>
+        <option value="Herbolzheim">Herbolzheim: (Maria-Sandstraße 3, 79336 Herbolzheim)</option>
+        <option value="Kirchzarten">Kirchzarten: (Marktplatz 3, 79199 Kirchzarten)</option>
+        <option value="Staufen">Staufen: (Adlergasse 8, 79219 Staufen im Breisgau)</option>
       </select>
     </div>
     <div class="row">

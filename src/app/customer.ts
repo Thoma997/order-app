@@ -3,10 +3,14 @@
  */
 
 export class Customer {
-  id: number;
   prename: string;
   name: string;
   adress: string;
   zip: string;
   city: string;
+  phone: string;
+  email: string;
+  additions: string;
+  payment_pickup_confirmed: boolean;
+  agb_comfirmed: boolean;
 }
