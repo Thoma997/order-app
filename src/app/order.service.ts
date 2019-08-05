@@ -60,5 +60,19 @@ export class OrderService{
     return this.articles.asObservable();
   }
 
+  sendInfoToApi(){
+    let articles:Article[] = [];
+    let total:number = 0;
+
+    this.getArticles().subscribe(value => {
+      articles = value;});
+
+    this.getOrdersTotal().subscribe(value => {
+      total = Number(value.toFixed(2));
+    });
+
+
+    this.apiService.sendOrderToApi(articles, total);
+  }
 }
 

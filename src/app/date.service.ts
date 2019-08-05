@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import {ApiService} from './api.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class DateService {
   private pickupDate: Date;
   private branch: string;
 
-  constructor() { }
+  constructor(private apiService: ApiService) { }
 
   setPickupDate(pickupDate: Date){
     this.pickupDate = pickupDate;
@@ -37,5 +38,9 @@ export class DateService {
 
   getBranch(): string {
     return this.branch;
+  }
+
+  sendInfoToApi(){
+    this.apiService.sendPickupToApi(this.pickupDate, this.branch);
   }
 }
